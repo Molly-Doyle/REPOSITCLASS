@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+
+    private int trashCounter = 0;
+    public TextMeshProUGUI counterText;
 
     void Start()
     {
@@ -66,6 +70,20 @@ public class PlayerMovement : MonoBehaviour
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(transform.position + (Vector3)groundCheckOffset, transform.position + (Vector3)groundCheckOffset + Vector3.down * groundCheckDistance);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // if(collision.CompareTag("Ground"))
+        // {
+        //     isGrounded = true;
+        // }
+        if (collision.CompareTag("Coin") && collision.gameObject.activeSelf)
+        {
+            // collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+            trashCounter +=1;
+            counterText.text = "Collected Trash: " + trashCounter;
         }
     }
 }
