@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerHealth : MonoBehaviour, IDamageable
@@ -7,6 +9,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float invulnerabilityDuration = 1f;
     [SerializeField] float blinkInterval = 0.1f;
+
 
     public float currentHealth;
     float invulnerabilityTimer;
@@ -51,7 +54,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             Die();
             return true;
-        }
+    }
 
         invulnerabilityTimer = invulnerabilityDuration;
         StartBlink(invulnerabilityDuration);
@@ -83,5 +86,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Die()
     {
         gameObject.SetActive(false);
+        SceneManager.LoadScene("GAMEOVER");
     }
-}
+}   
