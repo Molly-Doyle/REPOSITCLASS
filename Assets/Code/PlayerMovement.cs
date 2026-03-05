@@ -78,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
         // {
         //     isGrounded = true;
         // }
+        //Didnt need this in the end thx Sam for pointing it out for me
+
         if (collision.CompareTag("Coin") && collision.gameObject.activeSelf)
         {
             // collision.gameObject.SetActive(false);
