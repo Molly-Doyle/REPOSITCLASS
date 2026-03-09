@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class InventoryController : MonoBehaviour
 {
+    private ItemDictionary itemDictionary;
     public GameObject inventoryPanel;
     public GameObject slotPrefab;
     public int slotCount;
@@ -11,15 +14,50 @@ public class InventoryController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i < slotCount; i++)
+        itemDictionary = FindFirstObjectByType<ItemDictionary>();
+    }
+    public List<InventorySaveData> GetInventoryItems()
+    {
+        List<InventorySaveData> invData = new List<InventorySaveData>();
+        foreach(Transform slotTransform in inventoryPanel.transform)
         {
-            Slot slot = Instantiate(slotPrefab, inventoryPanel.transform).GetComponent<Slot>();
-            if(i < itemPrefabs.Length)
+            Slot slot = slotTransform.GetComponent<Slot>();
+            if(slot.currentItem != null)
             {
-                GameObject item = Instantiate(itemPrefabs[i], slot.transform);
-               item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-               slot.currentItem = item;
-            } 
+                Item item = slot.currentItem.GetComponent<Item>();
+                invData.Add(new InventorySaveData {itemID = item.ID, slotIndex = slotTransform.GetSiblingIndex()});
+            }
+        }
+        return invData;
+    }
+
+    public void SetInventoryItems(List<InventorySaveData> inventorySaveData)
+    {
+        foreach(Transform child in inventoryPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for(int i = 0; i< slotCount; i++)
+        {
+            Instantiate(slotPrefab, inventoryPanel.transform);
+        }
+
+        foreach(InventorySaveData data in inventorySaveData)
+        {
+            if(data.slotIndex < slotCount)
+            {
+                
+            Slot slot = inventoryPanel.transform.GetChild(data.slotIndex).GetComponent<Slot>();
+            GameObject itemPrefab = itemDictionary.GetItemPrefab(data.itemID);
+            if(itemPrefab != null)
+            {
+                GameObject item = Instantiate(itemPrefab, slot.transform);
+                item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                slot.currentItem = item;
+            }
+            
+            }
         }
     }
 }
