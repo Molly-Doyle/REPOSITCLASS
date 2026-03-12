@@ -20,10 +20,17 @@ public class EnemyAI : MonoBehaviour, IDamageable
     private Transform player;
     private bool isMovingRight = true;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
 
     [System.Obsolete]
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
 

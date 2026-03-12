@@ -14,6 +14,12 @@ public class SceneManagerController : MonoBehaviour
     {
         SceneManager.LoadScene("MENU");
     }
+
+    public void OnRestartClick()
+    {
+        SceneManager.LoadScene("MENU");
+    }
+
 public void OnExitClick()
     {
         #if UNITY_EDITOR
