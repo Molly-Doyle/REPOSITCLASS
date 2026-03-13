@@ -7,6 +7,7 @@ public class SaveController : MonoBehaviour
 {
     private string saveLocation;
     private InventoryController inventoryController;
+    AudioManager audioManager;
 
     void Start()
     {
@@ -25,6 +26,8 @@ public class SaveController : MonoBehaviour
         };
 
         File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager.PlaySFX(audioManager.saveGame);
     }
 
     public void LoadGame()

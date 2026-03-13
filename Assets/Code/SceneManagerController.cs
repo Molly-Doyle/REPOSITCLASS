@@ -5,10 +5,13 @@ using System.Collections.Generic;
 
 public class SceneManagerController : MonoBehaviour
 {   
+
     public void OnStartClick()
     {
         SceneManager.LoadScene("LevelOne");
     }
+
+    
 
     public void OnMenuClick()
     {
@@ -22,6 +25,7 @@ public class SceneManagerController : MonoBehaviour
 
 public void OnExitClick()
     {
+
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif

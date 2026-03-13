@@ -19,6 +19,13 @@ public class PlayerMovement : MonoBehaviour
     private int trashCounter = 0;
     public TextMeshProUGUI counterText;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -85,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
             // collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
             trashCounter +=1;
+            audioManager.PlaySFX(audioManager.itemPickup);
             counterText.text = "Collected Trash: " + trashCounter;
         }
     }

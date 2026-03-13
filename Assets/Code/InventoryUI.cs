@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour
 {
+    AudioManager audioManager;
 
     public GameObject menuCanvas;
 
@@ -18,6 +19,8 @@ public class InventoryUI : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+            audioManager.PlaySFX(audioManager.openInventory);
             menuCanvas.SetActive(!menuCanvas.activeSelf);
         }
     }

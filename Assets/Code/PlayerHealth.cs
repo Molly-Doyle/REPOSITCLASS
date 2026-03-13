@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -15,12 +13,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public float currentHealth;
     float invulnerabilityTimer;
-    
+
     SpriteRenderer sprite;
     float blinkTimer;
     bool blinking;
 
     public Slider healthSlider;
+
+    AudioManager audioManager;
 
     void Awake()
     {
@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         }
     }
 
@@ -54,10 +55,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0f)
         {
+            audioManager.PlaySFX(audioManager.death);
             Die();
             return true;
     }
-
+        audioManager.PlaySFX(audioManager.hit);
         invulnerabilityTimer = invulnerabilityDuration;
         StartBlink(invulnerabilityDuration);
         return true;

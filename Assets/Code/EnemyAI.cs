@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour, IDamageable
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    AudioManager audioManager;
+
 
     [System.Obsolete]
     private void Awake()
@@ -52,6 +54,8 @@ public class EnemyAI : MonoBehaviour, IDamageable
 
             if (distanceToPlayer <= detectionRange)
             {
+                audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+                audioManager.PlaySFX(audioManager.chasePlayer);
                 ChasePlayer(distanceToPlayer);
             }
             else
