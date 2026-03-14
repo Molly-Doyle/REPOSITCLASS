@@ -88,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             trashCounter +=1;
             counterText.text = "Collected Trash: " + trashCounter;
-            audioManager.PlaySFX(audioManager.itemPickup);
         }
     }
 }
