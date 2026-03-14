@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1334112178}
   SFXSource: {fileID: 1036355375}
-  background: {fileID: 8300000, guid: 10675422655cd6f489b470854969d85a, type: 3}
+  background: {fileID: 8300000, guid: d1565d45a6f8f3e4e8ee0a0607cb334a, type: 3}
   death: {fileID: 0}
   hit: {fileID: 0}
   chasePlayer: {fileID: 0}
@@ -295,7 +295,6 @@ MonoBehaviour:
   UIClick: {fileID: 8300000, guid: fb0839c73f53e7f43b1f9a1779ff34db, type: 3}
   saveGame: {fileID: 0}
   openInventory: {fileID: 0}
-  running: {fileID: 0}
   limbo: {fileID: 0}
   cutscene: {fileID: 0}
 --- !u!4 &455330488
@@ -1090,7 +1089,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
