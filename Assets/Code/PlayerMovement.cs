@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("Coin") && collision.gameObject.activeSelf)
         {
-            // collision.gameObject.SetActive(false);
+            
             Destroy(collision.gameObject);
             trashCounter +=1;
             counterText.text = "Collected Trash: " + trashCounter; 
