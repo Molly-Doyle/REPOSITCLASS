@@ -76,18 +76,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if(collision.CompareTag("Ground"))
-        // {
-        //     isGrounded = true;
-        // }
-        //Didnt need this in the end thx Sam for pointing it out for me
+        
 
         if (collision.CompareTag("Coin") && collision.gameObject.activeSelf)
         {
             // collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
             trashCounter +=1;
-            counterText.text = "Collected Trash: " + trashCounter;
+            counterText.text = "Collected Trash: " + trashCounter; 
         }
     }
 }

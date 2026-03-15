@@ -54,8 +54,8 @@ public class EnemyAI : MonoBehaviour, IDamageable
 
             if (distanceToPlayer <= detectionRange)
             {
-                audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-                audioManager.PlaySFX(audioManager.chasePlayer);
+                //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+                //audioManager.PlaySFX(audioManager.chasePlayer);
                 ChasePlayer(distanceToPlayer);
             }
             else
