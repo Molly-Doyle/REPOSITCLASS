@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    private int trashCounter = 0;
     public TextMeshProUGUI counterText;
 
     AudioManager audioManager;
@@ -47,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             else if (horizInput < -0.1f) spriteRenderer.flipX = true;
         }
 
-        // Update animator parameters
+        // Updated animator parameters
         if (animator != null)
         {
             animator.SetFloat("moveInput", Mathf.Abs(horizInput));
@@ -74,16 +73,5 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.DrawLine(transform.position + (Vector3)groundCheckOffset, transform.position + (Vector3)groundCheckOffset + Vector3.down * groundCheckDistance);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
 
-        if (collision.CompareTag("Coin") && collision.gameObject.activeSelf)
-        {
-            
-            Destroy(collision.gameObject);
-            trashCounter +=1;
-            counterText.text = "Collected Trash: " + trashCounter; 
-        }
-    }
 }
