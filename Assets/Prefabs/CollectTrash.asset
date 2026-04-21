@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ce84dac98ea964db11668f21ab9d79, type: 3}
+  m_Name: CollectTrash
+  m_EditorClassIdentifier: 
+  questID: 6f406254-c512-498e-9953-4b7eae785883
+  questName: Collect Trash
+  description: Cuddly the Crow wants his city cleaner!
+  objectives:
+  - objectiveID: 0
+    description: Collect 15 Trash
+    type: 0
+    requiredAmount: 15
+    currentAmount: 0

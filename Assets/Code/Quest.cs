@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Quest")]
-public class Quest : MonoBehaviour
+public class Quest : ScriptableObject
 {
     public string questID;
     public string questName;
@@ -34,6 +34,21 @@ public class Quest : MonoBehaviour
     }
 
     public enum ObjectiveType { CollectItem, ReachLocation, TalkNPC}
+}
+
+    [System.Serializable]
+public class QuestObjectives
+    {
+        public string objectiveID; //Note to self match with the item ID  you need to collect
+        public string description;
+        public ObjectiveType type;
+        public int requiredAmount;
+        public int currentAmount;
+
+        public bool IsComlpeted => currentAmount >= requiredAmount;
+    }
+
+    public enum ObjectiveType { CollectItem, ReachLocation, TalkNPC}
 
     [System.Serializable]
     public class QuestProgress
@@ -44,11 +59,11 @@ public class Quest : MonoBehaviour
 
         public QuestProgress(Quest quest)
         {
-        this.quest = quest;
-        objectives = new List<QuestObjectives>();
+            this.quest = quest;
+            objectives = new List<QuestObjectives>();
 
-        //Deep copy to avoid modifying the og
-        foreach(var obj in quest.objectives)
+            //Deep copy to avoid modifying the og
+            foreach(var obj in objectives)
             {
                 objectives.Add(new QuestObjectives
                 {
@@ -63,4 +78,3 @@ public class Quest : MonoBehaviour
         public bool IsComlpeted => objectives.TrueForAll(o => o.IsComlpeted);
         public string QuestID => quest.questID;
     }
-}
