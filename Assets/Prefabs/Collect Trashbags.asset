@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62ce84dac98ea964db11668f21ab9d79, type: 3}
-  m_Name: CollectTrash
+  m_Name: Collect Trashbags
   m_EditorClassIdentifier: 
-  questID: 6f406254-c512-498e-9953-4b7eae785883
-  questName: Collect Trash
-  description: Cuddly the Crow wants his city cleaner!
+  questID: CollectTrashbags55d0a19d-bd16-401c-9fe0-abb00a296a9e
+  questName: CollectTrashbags
+  description: Collect 15 Trashbags for Cuddly the Crow
   objectives:
   - objectiveID: 0
-    description: Collect 15 Trash
+    description: Collect 15 Trashbags for Cuddly the Crow
     type: 0
-    requiredAmount: 15
+    requiredAmount: 5
     currentAmount: 0

@@ -9,10 +9,10 @@ public class Quest : ScriptableObject
     public string questID;
     public string questName;
     public string description;
-    public List<QuestObjectives> objectives;
+    public List<QuestObjective> objectives;
 
 //called when scriptable obj is created 
-    private void OnEnable()
+    private void OnValidate()
     {
         if(string.IsNullOrEmpty(questID))
         {
@@ -22,7 +22,7 @@ public class Quest : ScriptableObject
     }
 
     [System.Serializable]
-    public class QuestObjectives
+    public class QuestObjective
     {
         public string objectiveID; //Note to self match with the item ID  you need to collect
         public string description;
@@ -37,7 +37,7 @@ public class Quest : ScriptableObject
 }
 
     [System.Serializable]
-public class QuestObjectives
+    public class QuestObjective
     {
         public string objectiveID; //Note to self match with the item ID  you need to collect
         public string description;
@@ -55,17 +55,17 @@ public class QuestObjectives
 
     {
         public Quest quest;
-        public List<QuestObjectives> objectives;
+        public List<QuestObjective> objectives;
 
         public QuestProgress(Quest quest)
         {
             this.quest = quest;
-            objectives = new List<QuestObjectives>();
+            objectives = new List<QuestObjective>();
 
             //Deep copy to avoid modifying the og
             foreach(var obj in objectives)
             {
-                objectives.Add(new QuestObjectives
+                objectives.Add(new QuestObjective
                 {
                     objectiveID = obj.objectiveID,
                     description = obj.description,
