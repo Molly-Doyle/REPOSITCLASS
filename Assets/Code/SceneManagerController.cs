@@ -33,4 +33,10 @@ public void OnExitClick()
         Application.Quit();
     }
 
+    private void CompletedQuestClick()
+    {
+        {
+            SceneManager.LoadScene("Cutscene");
+        }
+    }
 }

@@ -77,4 +77,4 @@ public class Quest : ScriptableObject
         }
         public bool IsComlpeted => objectives.TrueForAll(o => o.IsComlpeted);
         public string QuestID => quest.questID;
-    }
+}

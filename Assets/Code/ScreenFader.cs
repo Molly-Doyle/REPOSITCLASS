@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections;
 public class ScreenFader : MonoBehaviour
@@ -15,7 +16,7 @@ public class ScreenFader : MonoBehaviour
     
     async Task Fade(float targetTransparency)
         {
-            flat start = canvasGroup.alpha, t=0;
+            float start = canvasGroup.alpha, t=0;
             while(t < fadeDuration)
             {
                 t += Time.deltaTime;
