@@ -9,7 +9,6 @@ public class CollectibleManager : MonoBehaviour
 {
     public int trashCount;
     public TMP_Text trashText;
-    private GameObject factoryDoor;
     void Start()
     {
         
@@ -22,15 +21,7 @@ public class CollectibleManager : MonoBehaviour
 
         if(trashCount == 16)
         {
-            gameObject.SetActive(true);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collider.gameObject.CompareTag("Player"))
-        {
-                    SceneManager.LoadScene("Ending");
+           
         }
     }
 }
