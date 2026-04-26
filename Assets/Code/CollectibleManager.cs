@@ -9,19 +9,15 @@ public class CollectibleManager : MonoBehaviour
 {
     public int trashCount;
     public TMP_Text trashText;
-    void Start()
-    {
-        
-    }
+    public GameObject factorySceneChanger;
 
-    // Update is called once per frame
     void Update()
     {
-        trashText.text = "Trashbags Collected:" + trashCount.ToString();
+        trashText.text = "Collected Trash: " + trashCount.ToString();
 
         if(trashCount == 16)
         {
-           
+            Destroy(factorySceneChanger);
         }
     }
 }
