@@ -1,6 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 8f;
@@ -10,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 groundCheckOffset = new Vector2(0f, -0.5f);
     public LayerMask groundLayer;
 
+    public CollectibleManager cm; //For collectible
+
     private Rigidbody2D rb;
     private float horizInput;
     private bool isGrounded;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
-    public TextMeshProUGUI counterText;
 
     AudioManager audioManager;
 
@@ -74,4 +74,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+    //Collectible
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            cm.trashCount ++;
+        }
+    }
 }
